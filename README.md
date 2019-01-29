@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
+## Project
+
+1. Allows you to fill a resume form
+2. Allows you to choose a style template
+3. Allows you to see a preview of your data rendered in the chosen template
+    3.1. [sample](https://www.canva.com/templates/resumes/MAB5U1TL5BM-dark-blue-professional-resume)
+4.
+    4.1. Allows you to save your data to local storage
+    4.2. Allows you to export the preview as a pdf: [quora](https://www.quora.com/How-do-I-generate-a-PDF-using-Angular-4-6)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
