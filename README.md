@@ -12,6 +12,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     4.1. Allows you to save your data to local storage
     4.2. Allows you to export the preview as a pdf: [quora](https://www.quora.com/How-do-I-generate-a-PDF-using-Angular-4-6)
 
+## Main dependencies
+
+* angular-material
+
+### Icons
+
+Installed locally as described (here)[https://medium.com/@DenysVuika/material-icons-with-angular-cli-projects-b11bbace0425]
+
+## Development notes, important links
+
+https://material.angular.io/components/icon/overview
+https://alligator.io/angular/reactive-forms-formarray-dynamic-fields/
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

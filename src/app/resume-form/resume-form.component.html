@@ -1,3 +1,90 @@
-<p>
-  resume-form works!
-</p>
+<form class="resume-form" [formGroup]="resume">
+
+  <mat-form-field>
+    <input matInput formControlName="fullname" placeholder="full name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="position" placeholder="main role or position">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput formControlName="bio" placeholder="about you"></textarea>
+  </mat-form-field>
+
+  <!-- CONTACT INFO @todo -->
+
+  <!-- SKILLS -->
+
+  <h3>
+    Skills
+    <button mat-icon-button color="primary" (click)="addSkill()">
+      <mat-icon aria-label="new skill"><i class="material-icons">
+          add_circle_outline
+        </i></mat-icon>
+    </button>
+  </h3>
+
+  <mat-list-item formArrayName="skills" *ngFor="let skill of resume.get('skills').controls; let i = index;">
+
+    <div [formGroupName]="i">
+
+      <button mat-icon-button color="warn" (click)="removeSkill(i)">
+        <mat-icon aria-label="delete">
+          <i class="material-icons">
+            remove_circle_outline
+          </i>
+        </mat-icon>
+      </button>
+
+      <mat-form-field>
+        <input matInput formControlName="name" placeholder="Skill name">
+      </mat-form-field>
+
+      <mat-slider thumbLabel formControlName="grade" tickInterval="1" min="1" max="5"></mat-slider>
+
+    </div>
+  </mat-list-item>
+
+  <!-- LANGUAGES -->
+  
+  <h3>
+    Languages
+    <button mat-icon-button color="primary" (click)="addLanguage()">
+      <mat-icon aria-label="new language"><i class="material-icons">
+          add_circle_outline
+        </i></mat-icon>
+    </button>
+  </h3>
+
+  <mat-list-item formArrayName="languages" *ngFor="let language of resume.get('languages').controls; let j = index;">
+
+    <div [formGroupName]="j">
+
+      <button mat-icon-button color="warn" (click)="removeLanguage(j)">
+        <mat-icon aria-label="delete">
+          <i class="material-icons">
+            remove_circle_outline
+          </i>
+        </mat-icon>
+      </button>
+
+      <mat-form-field>
+        <input matInput formControlName="name" placeholder="Language">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Level" formControlName="grade">
+          <mat-option *ngFor="let g of languageGrades" [value]="g">
+            {{g.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+  </mat-list-item>
+
+</form>
+
+<!-- @todo floating SAVE EXPORT ETC -->

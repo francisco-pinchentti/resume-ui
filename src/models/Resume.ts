@@ -1,31 +1,21 @@
 export interface Resume {
     id?: string;
     fullname: string;
+    picture?: string;
     bio: string;
-    skills: ResumeSkill[];
-    contact: ResumeContactSheet;
+    skills?: ResumeSkill[];
     languages?: ResumeSkill[];
     experience?: ResumeExperienceEntry[];
+    contact: ResumeContactSheet;
 }
 
-/*
-    * Name
-        * Picture optional
-        * Position optional
-    * Profile/Bio
-    * Contact sheet
-    * Experience
-    * Skills
-    * Languages optional
-*/
-
 export interface ResumeSkill {
-    title: string;
+    name: string;
     grade: number;
 }
 
 export interface ResumeExperienceEntry {
-    title: string;
+    name: string;
     body: string;
     from: Date;
     to?: Date;
