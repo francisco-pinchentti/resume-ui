@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+
+import { ResumeService } from 'src/app/services/resume.service';
+import { Resume } from 'src/app/models/Resume';
 
 @Component({
   selector: 'app-resume-preview',
@@ -9,10 +16,26 @@ import html2canvas from 'html2canvas';
 })
 export class ResumePreviewComponent implements OnInit {
 
-  constructor() { }
+  private resumeId: string;
+  private resume$: Observable<Resume>;
+  public resumeModel: Resume;
+
+  constructor(
+    private route: ActivatedRoute,
+    private resumeService: ResumeService
+  ) { }
 
   ngOnInit() {
-    // load model from local storage (id, model)
+    this.resume$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        this.resumeId = params.get('id');
+        return this.resumeService.loadResume(this.resumeId);
+      })
+    );
+
+    this.resume$.subscribe((r: Resume) => {
+      this.resumeModel = r;
+    });
   }
 
   /**

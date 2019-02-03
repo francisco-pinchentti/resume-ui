@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { Resume } from 'src/app/models/Resume';
+import { ResumeService } from 'src/app/services/resume.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-resume-form',
@@ -9,9 +12,13 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 })
 export class ResumeFormComponent implements OnInit {
 
-  // options: FormGroup;
-  public resume: FormGroup;
+  // di:
   private formBuilder: FormBuilder;
+  private resumeService: ResumeService;
+  private router: Router;
+
+  public resume: FormGroup;
+  private resumeId: string;
 
   public languageGrades = [
     { label: 'basic', grade: 1 },
@@ -20,16 +27,22 @@ export class ResumeFormComponent implements OnInit {
     { label: 'native', grade: 4 }
   ];
 
-  constructor(formBuilder: FormBuilder) {
+  constructor(
+    formBuilder: FormBuilder,
+    resumeService: ResumeService,
+    router: Router
+  ) {
 
     this.formBuilder = formBuilder;
+    this.resumeService = resumeService;
+    this.router = router;
 
     this.resume = formBuilder.group({
       fullname: ['', Validators.required],    // full candidate name
       picture: [''],                          // optional profile picture
       position: [''],                         // applying position / main role
       bio: ['', Validators.maxLength(1024)],  // a.k.a. profile/about me
-      experience: formBuilder.array([]),
+      experiences: formBuilder.array([]),
       skills: formBuilder.array([]),          // @todo validate non repeated
       languages: formBuilder.array([]),       // @todo validate non repeated
       email: ['', Validators.email],
@@ -42,13 +55,23 @@ export class ResumeFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    // @todo if its new generate an ID, else read from route param?
+    this.resumeId = uuid();
   }
 
   private createNewSkill(): any {
     return this.formBuilder.group({
       name: ['', Validators.required],
       grade: [1, Validators.required]
+    });
+  }
+
+  private createNewExperienceEntry() {
+    return this.formBuilder.group({
+      position: ['', Validators.required],
+      company: ['', Validators.required],
+      summary: [''],
+      from: [new Date()],
+      to: []
     });
   }
 
@@ -75,6 +98,16 @@ export class ResumeFormComponent implements OnInit {
     skills.removeAt(i);
   }
 
+  public addExperienceEntry(): void {
+    const experiences = this.resume.get('experiences') as FormArray;
+    experiences.push(this.createNewExperienceEntry());
+  }
+
+  public removeExperienceEntry(i: number): void {
+    const experiences = this.resume.get('experiences') as FormArray;
+    experiences.removeAt(i);
+  }
+
   public onLoad() {
     // @todo load previous JSON model from localstorage
   }
@@ -82,15 +115,32 @@ export class ResumeFormComponent implements OnInit {
   public onSave() {
 
     if (this.resume.valid) {
-      const f = this.resume.value;
-      console.log(f);
-    }
 
-    // @todo
-    // 1. form to json
-    // 2. json to model
-    // 3. save to localstorage (id, model)
-    // 4. go to preview
+      const resume: Resume = {
+        id: this.resumeId,
+        fullname: this.resume.get('fullname').value,
+        bio: this.resume.get('bio').value,
+        skills: this.resume.get('skills').value,
+        languages: this.resume.get('languages').value,
+        experiences: this.resume.get('experiences').value,
+        contact: {
+          email: this.resume.get('email').value,
+          github: this.resume.get('github').value,
+          linkedIn: this.resume.get('linkedIn').value,
+          skypeID: this.resume.get('skypeID').value,
+          website: this.resume.get('website').value
+        }
+      };
+
+      this.resumeService
+        .saveResume(resume)
+        .toPromise()
+        .then((r: Resume) => {
+          this.router.navigate(['/preview', this.resumeId]);
+        })
+        .catch((reason) => console.error(reason));
+
+    }
   }
 
 }

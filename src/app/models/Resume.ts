@@ -5,7 +5,7 @@ export interface Resume {
     bio: string;
     skills?: ResumeSkill[];
     languages?: ResumeSkill[];
-    experience?: ResumeExperienceEntry[];
+    experiences?: ResumeExperienceEntry[];
     contact: ResumeContactSheet;
 }
 
@@ -15,7 +15,7 @@ export interface ResumeSkill {
 }
 
 export interface ResumeExperienceEntry {
-    name: string;
+    position: string;
     body: string;
     from: Date;
     to?: Date;

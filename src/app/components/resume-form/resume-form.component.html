@@ -54,6 +54,70 @@
 
   </mat-grid-list>
 
+  <!-- EXPERIENCES -->
+
+  <h3>
+    Job Experience
+    <button mat-icon-button color="primary" (click)="addExperienceEntry()">
+      <mat-icon aria-label="new skill"><i class="material-icons">
+          add_circle_outline
+        </i></mat-icon>
+    </button>
+  </h3>
+
+  <mat-list-item formArrayName="experiences" *ngFor="let expEntry of resume.get('experiences').controls; let e = index;">
+
+    <div [formGroupName]="e">
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+
+            <mat-form-field>
+              <input matInput type="text" formControlName="position" placeholder="position">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput type="text" formControlName="company" placeholder="where">
+            </mat-form-field>
+
+          </mat-card-title>
+
+          <mat-card-subtitle>
+            <mat-form-field>
+              <input matInput [matDatepicker]="ee" placeholder="from" formControlName="from">
+              <mat-datepicker-toggle matSuffix [for]="ee"></mat-datepicker-toggle>
+              <mat-datepicker #ee></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput [matDatepicker]="to" placeholder="to" formControlName="to">
+              <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
+              <mat-datepicker #to></mat-datepicker>
+            </mat-form-field>
+          </mat-card-subtitle>
+
+        </mat-card-header>
+
+        <mat-card-content>
+          <mat-form-field style="width:100%;">
+            <textarea rows="3" matInput formControlName="summary" placeholder="detail"></textarea>
+          </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-actions [align]="'end'">
+          <button mat-icon-button color="warn" (click)="removeExperienceEntry(e)">
+            <mat-icon aria-label="delete">
+              <i class="material-icons">
+                remove_circle_outline
+              </i>
+            </mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-list-item>
+
   <!-- SKILLS -->
 
   <h3>

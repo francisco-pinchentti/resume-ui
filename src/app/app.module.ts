@@ -17,17 +17,21 @@ import {
   MatRadioModule,
   MatSliderModule,
   MatToolbarModule,
-  MatGridListModule
+  MatGridListModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatCardModule
 } from '@angular/material';
 
 // custom
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ResumeDashboardComponent } from './resume-dashboard/resume-dashboard.component';
-import { ResumeFormComponent } from './resume-form/resume-form.component';
-import { ResumePreviewComponent } from './resume-preview/resume-preview.component';
-import { ResumeFormToolbarComponent } from './resume-form/resume-form-toolbar/resume-form-toolbar.component';
-import { ResumeNavbarComponent } from './resume-navbar/resume-navbar.component';
+import { ResumeDashboardComponent } from './components/resume-dashboard/resume-dashboard.component';
+import { ResumeFormComponent } from './components/resume-form/resume-form.component';
+import { ResumeFormToolbarComponent } from './components/resume-form/resume-form-toolbar/resume-form-toolbar.component';
+import { ResumePreviewComponent } from './components/resume-preview/resume-preview.component';
+import { ResumeNavbarComponent } from './components/resume-navbar/resume-navbar.component';
+import { ResumeService } from './services/resume.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +52,10 @@ import { ResumeNavbarComponent } from './resume-navbar/resume-navbar.component';
     MatIconModule,
     MatFormFieldModule,
     MatCheckboxModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatListModule,
+    MatCardModule,
     MatMenuModule,
     MatButtonModule,
     MatRadioModule,
@@ -56,7 +63,9 @@ import { ResumeNavbarComponent } from './resume-navbar/resume-navbar.component';
     MatInputModule,
     MatSliderModule
   ],
-  providers: [],
+  providers: [
+    ResumeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

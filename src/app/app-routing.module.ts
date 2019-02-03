@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ResumeDashboardComponent } from './resume-dashboard/resume-dashboard.component';
-import { ResumeFormComponent } from './resume-form/resume-form.component';
-import { ResumePreviewComponent } from './resume-preview/resume-preview.component';
+import { ResumeDashboardComponent } from './components/resume-dashboard/resume-dashboard.component';
+import { ResumeFormComponent } from './components/resume-form/resume-form.component';
+import { ResumePreviewComponent } from './components/resume-preview/resume-preview.component';
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
     component: ResumeFormComponent
   },
   {
-    path: 'preview',
+    path: 'preview/:id',
     component: ResumePreviewComponent
   },
   {
