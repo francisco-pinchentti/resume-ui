@@ -2,10 +2,10 @@
     display: flex;
     position: fixed;
     width: 100%;
-    height: 3em;
     left: 0px;
     overflow: hidden;
+    z-index: 100;
     &.res-toolbar--bottom {
         bottom: 0px;
-    }
+    }    
 }

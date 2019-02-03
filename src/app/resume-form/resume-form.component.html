@@ -12,7 +12,47 @@
     <textarea matInput formControlName="bio" placeholder="about you"></textarea>
   </mat-form-field>
 
-  <!-- CONTACT INFO @todo -->
+  <!-- CONTACT INFO -->
+
+  <h3>Contact</h3>
+  <mat-grid-list cols="3" rowHeight="2rem">
+
+    <mat-grid-tile>
+      <mat-icon aria-label=""><i class="material-icons">email</i></mat-icon>
+      <mat-form-field>
+        <input matInput type="email" formControlName="email" placeholder="email">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-icon aria-label=""><i class="material-icons">code</i></mat-icon>
+      <mat-form-field>
+        <input matInput formControlName="github" placeholder="github">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-icon aria-label=""><i class="material-icons">work</i></mat-icon>
+      <mat-form-field>
+        <input matInput formControlName="linkedIn" placeholder="linkedIn">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-icon aria-label=""><i class="material-icons">call</i></mat-icon>
+      <mat-form-field>
+        <input matInput formControlName="skypeID" placeholder="skype id">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-icon aria-label=""><i class="material-icons">web</i></mat-icon>
+      <mat-form-field>
+        <input matInput formControlName="website" placeholder="personal website">
+      </mat-form-field>
+    </mat-grid-tile>
+
+  </mat-grid-list>
 
   <!-- SKILLS -->
 
@@ -47,7 +87,7 @@
   </mat-list-item>
 
   <!-- LANGUAGES -->
-  
+
   <h3>
     Languages
     <button mat-icon-button color="primary" (click)="addLanguage()">
@@ -87,4 +127,4 @@
 
 </form>
 
-<app-resume-form-toolbar></app-resume-form-toolbar>
+<app-resume-form-toolbar (save)="onSave($event)" [formValid]="resume.valid"></app-resume-form-toolbar>

@@ -16,7 +16,8 @@ import {
   MatMenuModule,
   MatRadioModule,
   MatSliderModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatGridListModule
 } from '@angular/material';
 
 // custom
@@ -42,6 +43,7 @@ import { ResumeNavbarComponent } from './resume-navbar/resume-navbar.component';
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatGridListModule,
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,

@@ -22,8 +22,9 @@ export interface ResumeExperienceEntry {
 }
 
 export interface ResumeContactSheet {
+    email: string;
     github: string;
-    gmail: string;
+    linkedIn: string;
     skypeID: string;
     website: string;
 }

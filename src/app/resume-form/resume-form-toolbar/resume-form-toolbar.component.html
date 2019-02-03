@@ -1,37 +1,23 @@
 <div class="res-toolbar res-toolbar--bottom">
   <mat-toolbar color="primary">
 
-    <span>1</span>
+    <span>TOOLBAR</span>
 
     <span class="tb-fill"></span>
 
-    <!-- <button mat-icon-button color="primary" (click)="onSave()">
+    <button mat-button (click)="onSave()" [disabled]="!formValid">
       <span>Save</span>
       <mat-icon aria-label="new skill"><i class="material-icons">
           add_circle_outline
         </i></mat-icon>
     </button>
 
-    <button mat-icon-button color="primary" (click)="onPreview()">
+    <button mat-button (click)="onPreview()" [disabled]="!formValid">
       <span>Preview</span>
       <mat-icon aria-label="new skill"><i class="material-icons">
           add_circle_outline
         </i></mat-icon>
-    </button> -->
-
-        <button mat-button color="primary" (click)="onSave()">
-          <span>Save</span>
-          <mat-icon aria-label="new skill"><i class="material-icons">
-              add_circle_outline
-            </i></mat-icon>
-        </button>
-        
-        <button mat-button color="primary" (click)="onPreview()">
-          <span>Preview</span>
-          <mat-icon aria-label="new skill"><i class="material-icons">
-              add_circle_outline
-            </i></mat-icon>
-        </button>
+    </button>
 
   </mat-toolbar>
 </div>

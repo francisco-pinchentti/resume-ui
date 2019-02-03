@@ -32,11 +32,11 @@ export class ResumeFormComponent implements OnInit {
       experience: formBuilder.array([]),
       skills: formBuilder.array([]),          // @todo validate non repeated
       languages: formBuilder.array([]),       // @todo validate non repeated
-      contact: formBuilder.group({
-        gmail: ['', Validators.compose([Validators.email])],
-        linkedIn: [''], // @see Validators.pattern() for url
-        secondaryEmail: ['', Validators.email]
-      })
+      email: ['', Validators.email],
+      github: [''],   // @see Validators.pattern() for url
+      linkedIn: [''], // @see Validators.pattern() for url
+      skypeID: [''],
+      website: ['']   // @see Validators.pattern() for url
     });
 
   }
@@ -80,6 +80,12 @@ export class ResumeFormComponent implements OnInit {
   }
 
   public onSave() {
+
+    if (this.resume.valid) {
+      const f = this.resume.value;
+      console.log(f);
+    }
+
     // @todo
     // 1. form to json
     // 2. json to model

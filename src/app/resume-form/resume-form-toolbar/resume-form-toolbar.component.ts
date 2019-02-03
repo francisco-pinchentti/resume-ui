@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-resume-form-toolbar',
@@ -9,17 +9,26 @@ export class ResumeFormToolbarComponent implements OnInit {
 
   // @todo take input model
 
+  @Output()
+  save = new EventEmitter();
+
+  @Output()
+  preview = new EventEmitter();
+
+  @Input()
+  public formValid: boolean;
+
   constructor() { }
 
   ngOnInit() {
   }
 
   public onSave() {
-    // @todo emit
+    this.save.emit();
   }
 
   public onPreview() {
-    // @todo emit
+    this.preview.emit();
   }
 
 }
