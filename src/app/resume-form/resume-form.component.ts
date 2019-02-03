@@ -41,7 +41,9 @@ export class ResumeFormComponent implements OnInit {
 
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // @todo if its new generate an ID, else read from route param?
+  }
 
   private createNewSkill(): any {
     return this.formBuilder.group({

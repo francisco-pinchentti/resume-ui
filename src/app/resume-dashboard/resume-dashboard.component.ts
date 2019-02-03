@@ -10,6 +10,7 @@ export class ResumeDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    //@todo read possible resumes from storage, build list with EDIT / DELETE / PREIEW icons
   }
 
 }

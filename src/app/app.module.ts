@@ -25,13 +25,17 @@ import { AppComponent } from './app.component';
 import { ResumeDashboardComponent } from './resume-dashboard/resume-dashboard.component';
 import { ResumeFormComponent } from './resume-form/resume-form.component';
 import { ResumePreviewComponent } from './resume-preview/resume-preview.component';
+import { ResumeFormToolbarComponent } from './resume-form/resume-form-toolbar/resume-form-toolbar.component';
+import { ResumeNavbarComponent } from './resume-navbar/resume-navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResumeDashboardComponent,
     ResumeFormComponent,
+    ResumeFormToolbarComponent,
     ResumePreviewComponent,
+    ResumeNavbarComponent,
   ],
   imports: [
     BrowserModule,
