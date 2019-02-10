@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormArray, AbstractControl } from '
 import { Resume, ResumeExperienceEntry, ResumeSkill } from 'src/app/models/Resume';
 import { ResumeService } from 'src/app/services/resume.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LanguageGradesMap } from 'src/app/models/LanguageGradesMap';
 
 @Component({
   selector: 'app-resume-form',
@@ -21,12 +22,7 @@ export class ResumeFormComponent implements OnInit {
   public resume: FormGroup;
   private resumeId: string;
 
-  public languageGrades = [
-    { label: 'basic', grade: 1 },
-    { label: 'intermediate', grade: 2 },
-    { label: 'advanced', grade: 3 },
-    { label: 'native', grade: 4 }
-  ];
+  public languageGradesMap = LanguageGradesMap;
 
   constructor(
     formBuilder: FormBuilder,
@@ -130,7 +126,7 @@ export class ResumeFormComponent implements OnInit {
     const languages = this.resume.get('languages') as FormArray;
     languages.push(this.formBuilder.group({
       name: '',
-      grade: this.languageGrades[0]
+      grade: this.languageGradesMap[0]
     }));
   }
 
