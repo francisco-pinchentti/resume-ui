@@ -17,7 +17,7 @@ export interface ResumeSkill {
 
 export interface ResumeExperienceEntry {
     position: string;
-    body: string;
+    summary: string;
     from: Date;
     to?: Date;
 }

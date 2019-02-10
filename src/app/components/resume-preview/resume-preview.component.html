@@ -18,14 +18,18 @@
 
       <article class="resume-entry">
         <h4>contact</h4>
-        <p>...</p>
+        <p>{{ resumeModel.email }}</p>
+        <p>{{ resumeModel.github }}</p>
+        <p>{{ resumeModel.linkedIn }}</p>
+        <p>{{ resumeModel.skypeID }}</p>
+        <p>{{ resumeModel.website }}</p>
       </article>
 
       <article class="resume-entry">
         <h4>languages</h4>
         <ul class="entry-list--graded">
-          <li>
-            <span>Name</span><span>SCORE</span>
+          <li *ngFor="let l of resumeModel.languages">
+            <span>{{ l.name }}</span><span>{{ l.grade.label }}</span>
           </li>
         </ul>
       </article>
@@ -37,9 +41,9 @@
       <article class="resume-entry">
         <h4>experience</h4>
         <ul class="entry-list--simple">
-          <li>
-            <p>MAIN BOLD</p>
-            <p>secondary</p>
+          <li *ngFor="let e of resumeModel.experiences">
+            <p>{{ e.position }} at {{ e.company }}, from <span>{{ e.from | date }} to {{ e.to | date }}</span></p>
+            <p>{{ e.summary }}</p>
           </li>
         </ul>
       </article>
@@ -47,8 +51,11 @@
       <article class="resume-entry">
         <h4>skills</h4>
         <ul class="entry-list--graded">
-          <li>
-            <span>Name</span><span>SCORE</span>
+          <li *ngFor="let s of resumeModel.skills">
+            <span>{{ s.name }}</span>
+            <span>
+              <i *ngFor="let g of asArray(s.grade)">X</i>
+            </span>
           </li>
         </ul>
       </article>

@@ -38,6 +38,10 @@ export class ResumePreviewComponent implements OnInit {
     });
   }
 
+  public asArray(n: Number): Array<Number> {
+    return new Array(n);
+  }
+
   /**
    * @sample
    */
