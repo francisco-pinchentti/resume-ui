@@ -1,6 +1,7 @@
 export interface Resume {
     id?: string;
     fullname: string;
+    position: string;
     picture?: string;
     bio: string;
     skills?: ResumeSkill[];

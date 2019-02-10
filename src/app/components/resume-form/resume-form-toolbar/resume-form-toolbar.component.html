@@ -1,21 +1,19 @@
 <div class="res-toolbar res-toolbar--bottom">
   <mat-toolbar color="primary">
 
-    <span>TOOLBAR</span>
-
     <span class="tb-fill"></span>
 
     <button mat-button (click)="onSave()" [disabled]="!formValid">
       <span>Save</span>
       <mat-icon aria-label="new skill"><i class="material-icons">
-          add_circle_outline
+          save
         </i></mat-icon>
     </button>
 
     <button mat-button (click)="onPreview()" [disabled]="!formValid">
       <span>Preview</span>
       <mat-icon aria-label="new skill"><i class="material-icons">
-          add_circle_outline
+          pageview
         </i></mat-icon>
     </button>
 

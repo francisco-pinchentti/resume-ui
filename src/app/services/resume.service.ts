@@ -8,7 +8,17 @@ export class ResumeService {
   constructor() { }
 
   listResumes(): Observable<Resume[]> {
-    return of([]);
+    const resumes = Object.keys(localStorage).map(k => {
+      let item = null;
+      try {
+        item = JSON.parse(localStorage.getItem(k));
+      } catch (e) {
+      }
+      finally {
+        return item;
+      }
+    }).filter( i => !!i);
+    return of(resumes);
   }
 
   loadResume(id: string): Observable<Resume> {

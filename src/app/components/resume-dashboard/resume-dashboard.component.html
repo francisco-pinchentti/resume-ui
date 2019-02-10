@@ -1,15 +1,51 @@
+<h2>Resumes found</h2>
+
 <mat-list>
-  <mat-list-item>CV 1</mat-list-item>
-  <mat-list-item>CV 2</mat-list-item>
-  <mat-list-item>CV 3</mat-list-item>
-  <mat-list-item>CV 4</mat-list-item>
+  <h3 mat-subheader>This web lets you:</h3>
+  <mat-list-item>fill out a form with a person's resume information</mat-list-item>
+  <mat-list-item>preview it in a nice template</mat-list-item>
+  <mat-list-item>and then: export it as a pdf or as a json if you want to keep a local copy</mat-list-item>
+  <mat-list-item>currently resumes are saved in your browser storage <span>-we keep no copy of your data-</span></mat-list-item>
 </mat-list>
 
-<mat-menu #appMenu="matMenu">
-  <button mat-menu-item>X</button>
-  <button mat-menu-item>Y</button>
-</mat-menu>
+<div class="card-list">
+  <mat-card class="resume-card" *ngFor="let resume of resumes">
+    <mat-card-header>
+      <mat-card-title>
+        {{ resume.fullname }}
+      </mat-card-title>
 
-<button mat-icon-button [matMenuTriggerFor]="appMenu">
-  <mat-icon>more_vert</mat-icon>
-</button>
+      <mat-card-subtitle>
+        {{ resume.position }}
+      </mat-card-subtitle>
+
+    </mat-card-header>
+
+    <mat-card-content>
+    </mat-card-content>
+
+    <mat-card-actions [align]="'end'">
+      <button mat-icon-button color="warn">
+        <mat-icon aria-label="delete">
+          <i class="material-icons">
+            remove_circle_outline
+          </i>
+        </mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon aria-label="preview">
+          <i class="material-icons">
+            print
+          </i>
+        </mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon aria-label="edit">
+          <i class="material-icons">
+            edit_circle_outline
+          </i>
+        </mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

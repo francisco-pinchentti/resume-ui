@@ -119,6 +119,7 @@ export class ResumeFormComponent implements OnInit {
       const resume: Resume = {
         id: this.resumeId,
         fullname: this.resume.get('fullname').value,
+        position: this.resume.get('position').value,
         bio: this.resume.get('bio').value,
         skills: this.resume.get('skills').value,
         languages: this.resume.get('languages').value,
