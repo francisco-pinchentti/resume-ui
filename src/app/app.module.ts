@@ -20,7 +20,8 @@ import {
   MatGridListModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatCardModule
+  MatCardModule,
+  MatTooltipModule
 } from '@angular/material';
 
 // custom
@@ -32,6 +33,7 @@ import { ResumeFormToolbarComponent } from './components/resume-form/resume-form
 import { ResumePreviewComponent } from './components/resume-preview/resume-preview.component';
 import { ResumeNavbarComponent } from './components/resume-navbar/resume-navbar.component';
 import { ResumeService } from './services/resume.service';
+import { ResumePreviewToolbarComponent } from './components/resume-preview/resume-preview-toolbar/resume-preview-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { ResumeService } from './services/resume.service';
     ResumeFormToolbarComponent,
     ResumePreviewComponent,
     ResumeNavbarComponent,
+    ResumePreviewToolbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { ResumeService } from './services/resume.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatGridListModule,
+    MatTooltipModule,
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,

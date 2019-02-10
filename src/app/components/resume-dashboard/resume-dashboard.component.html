@@ -25,27 +25,47 @@
     </mat-card-content>
 
     <mat-card-actions [align]="'end'">
-      <button mat-icon-button color="warn">
+      
+      <button
+        mat-icon-button
+        (click)="onDeleteResume(resume)"
+        color="warn"
+        matTooltip="delete resume"
+        [matTooltipPosition]="'above'"
+      >
         <mat-icon aria-label="delete">
           <i class="material-icons">
             remove_circle_outline
           </i>
         </mat-icon>
       </button>
-      <button mat-icon-button>
+
+      <button
+        mat-icon-button
+        (click)="onGoToPreview(resume)"
+        matTooltip="preview resume"
+        [matTooltipPosition]="'above'"
+        >
         <mat-icon aria-label="preview">
           <i class="material-icons">
             print
           </i>
         </mat-icon>
       </button>
-      <button mat-icon-button>
+
+      <button
+        mat-icon-button
+        (click)="onEditResume(resume)"
+        matTooltip="edit resume"
+        [matTooltipPosition]="'above'"
+      >
         <mat-icon aria-label="edit">
           <i class="material-icons">
             edit_circle_outline
           </i>
         </mat-icon>
       </button>
+
     </mat-card-actions>
   </mat-card>
 </div>

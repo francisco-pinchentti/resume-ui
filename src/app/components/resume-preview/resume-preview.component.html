@@ -1,6 +1,6 @@
 <div class="spacer"></div>
 
-<article class="minimalist--black">
+<article id="resume-node" class="minimalist--black">
 
   <header class="resume-header">
     <h1>{{ resumeModel.fullname }}</h1>
@@ -66,8 +66,4 @@
 
 </article>
 
-<div class="spacer"></div>
-
-<pre>
-  {{ resumeModel | json }}
-</pre>
+<app-resume-preview-toolbar (save)="saveAsPDF()"></app-resume-preview-toolbar>

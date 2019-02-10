@@ -1,0 +1,11 @@
+.res-toolbar {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    overflow: hidden;
+    z-index: 100;
+    &.res-toolbar--bottom {
+        bottom: 0px;
+    }
+}

@@ -32,4 +32,12 @@ export class ResumeService {
     return of(r);
   }
 
+  deleteResume(id: string): Observable<Resume> {
+    const _deletedStr = localStorage.getItem(id);
+    if (_deletedStr) {
+      localStorage.removeItem(id);
+    }
+    return of (JSON.parse(_deletedStr));
+  }
+
 }
