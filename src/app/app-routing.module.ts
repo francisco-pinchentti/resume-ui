@@ -14,6 +14,10 @@ const routes: Routes = [
     component: ResumeFormComponent
   },
   {
+    path: 'resume/:id',
+    component: ResumeFormComponent
+  },
+  {
     path: 'preview/:id',
     component: ResumePreviewComponent
   },

@@ -45,7 +45,7 @@ export class ResumeDashboardComponent implements OnInit, OnDestroy {
   }
 
   public onEditResume(resume: Resume): void {
-    // this.router.navigate(['/resume', resume.id]);
+    this.router.navigate(['/resume', resume.id]);
   }
 
 }
