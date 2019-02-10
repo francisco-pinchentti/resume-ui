@@ -1,4 +1,4 @@
-# ResumeUi
+# NG7 Resume UI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
@@ -15,6 +15,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Main dependencies
 
 * angular-material
+* material icons
+* jspdf
+* html2canvas
+
+## Live demo
+
+(it's on heroku)[https://ng7resume.herokuapp.com/]
 
 ### Icons
 
