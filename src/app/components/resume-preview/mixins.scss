@@ -1,0 +1,13 @@
+@mixin bg-gradient-I($height:2px) {
+    background: linear-gradient(#292929 50%, #000 50%);
+    background-size: 100% $height;
+}
+
+@mixin bg-gradient-II($rotation: 45deg) {
+    background-image: linear-gradient($rotation, #292929, #000);
+}
+
+@mixin bg-gradient-III($width: 10%, $height: 50px, $rotation: 45deg) {
+    background-image: linear-gradient($rotation, #292929, #000);
+    background-size: $width $height;
+}
