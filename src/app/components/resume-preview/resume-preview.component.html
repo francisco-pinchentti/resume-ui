@@ -1,3 +1,66 @@
+<div class="spacer"></div>
+
+<article class="minimalist--black">
+
+  <header class="resume-header">
+    <h1>{{ resumeModel.fullname }}</h1>
+    <h3>{{ resumeModel.position }}</h3>
+  </header>
+
+  <section class="resume-body">
+
+    <div class="resume-col">
+
+      <article class="resume-entry">
+        <h4>profile</h4>
+        <p>{{ resumeModel.bio }}</p>
+      </article>
+
+      <article class="resume-entry">
+        <h4>contact</h4>
+        <p>...</p>
+      </article>
+
+      <article class="resume-entry">
+        <h4>languages</h4>
+        <ul class="entry-list--graded">
+          <li>
+            <span>Name</span><span>SCORE</span>
+          </li>
+        </ul>
+      </article>
+
+    </div>
+
+    <div class="resume-col">
+
+      <article class="resume-entry">
+        <h4>experience</h4>
+        <ul class="entry-list--simple">
+          <li>
+            <p>MAIN BOLD</p>
+            <p>secondary</p>
+          </li>
+        </ul>
+      </article>
+
+      <article class="resume-entry">
+        <h4>skills</h4>
+        <ul class="entry-list--graded">
+          <li>
+            <span>Name</span><span>SCORE</span>
+          </li>
+        </ul>
+      </article>
+
+    </div>
+
+  </section>
+
+</article>
+
+<div class="spacer"></div>
+
 <pre>
   {{ resumeModel | json }}
 </pre>
