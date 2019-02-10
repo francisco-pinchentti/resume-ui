@@ -179,7 +179,7 @@
 
       <mat-form-field>
         <mat-select placeholder="Level" formControlName="grade">
-          <mat-option *ngFor="let g of languageGrades" [value]="g">
+          <mat-option *ngFor="let g of languageGrades" [value]="g.grade">
             {{g.label}}
           </mat-option>
         </mat-select>

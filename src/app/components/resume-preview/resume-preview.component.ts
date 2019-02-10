@@ -7,7 +7,8 @@ import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 
 import { ResumeService } from 'src/app/services/resume.service';
-import { Resume } from 'src/app/models/Resume';
+import { Resume, ResumeSkill } from 'src/app/models/Resume';
+import { gradeToLabel } from 'src/app/models/LanguageGradesMap';
 
 @Component({
   selector: 'app-resume-preview',
@@ -26,6 +27,7 @@ export class ResumePreviewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // get route params with 'paramMap':
     this.resume$ = this.route.paramMap.pipe(
       switchMap(params => {
         this.resumeId = params.get('id');
@@ -46,6 +48,10 @@ export class ResumePreviewComponent implements OnInit {
 
   public asArray(n: Number): Array<Number> {
     return new Array(n);
+  }
+
+  public gradeToLabel(l: ResumeSkill): string {
+    return gradeToLabel(l.grade);
   }
 
   public saveAsPDF() {

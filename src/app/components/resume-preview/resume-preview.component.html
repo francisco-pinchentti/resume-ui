@@ -29,7 +29,7 @@
         <h4>languages</h4>
         <ul class="entry-list--graded">
           <li *ngFor="let l of resumeModel.languages">
-            <span>{{ l.name }}</span><span>{{ l.grade.label }}</span>
+            <span>{{ l.name }}</span><span>{{ gradeToLabel(l) }}</span>
           </li>
         </ul>
       </article>

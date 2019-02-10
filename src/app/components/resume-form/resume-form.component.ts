@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { v4 as uuid } from 'uuid';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { Resume } from 'src/app/models/Resume';
+import { FormGroup, FormBuilder, Validators, FormArray, AbstractControl } from '@angular/forms';
+import { Resume, ResumeExperienceEntry, ResumeSkill } from 'src/app/models/Resume';
 import { ResumeService } from 'src/app/services/resume.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-resume-form',
@@ -16,6 +16,7 @@ export class ResumeFormComponent implements OnInit {
   private formBuilder: FormBuilder;
   private resumeService: ResumeService;
   private router: Router;
+  private route: ActivatedRoute;
 
   public resume: FormGroup;
   private resumeId: string;
@@ -30,12 +31,14 @@ export class ResumeFormComponent implements OnInit {
   constructor(
     formBuilder: FormBuilder,
     resumeService: ResumeService,
-    router: Router
+    router: Router,
+    route: ActivatedRoute
   ) {
 
     this.formBuilder = formBuilder;
     this.resumeService = resumeService;
     this.router = router;
+    this.route = route;
 
     this.resume = formBuilder.group({
       fullname: ['', Validators.required],    // full candidate name
@@ -55,13 +58,51 @@ export class ResumeFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.resumeId = uuid();
+    // get route params with snapshot:
+    if (this.route.snapshot.params.id) {
+      this.resumeId = this.route.snapshot.params.id;
+      this.resumeService
+        .loadResume(this.resumeId)
+        .subscribe((r: Resume) => {
+          this.resume.patchValue({
+            fullname: r.fullname,
+            picture: r.picture || '',
+            position: r.position,
+            bio: r.bio,
+            // experiences: r.experiences || [],
+            // skills: r.experiences || [],
+            // languages: r.experiences || [],
+            email: r.contact.email || '',
+            github: r.contact.github || '',
+            linkedIn: r.contact.linkedIn || '',
+            skypeID: r.contact.skypeID || '',
+            website: r.contact.website || ''
+          });
+
+          const experiences = this.resume.get('experiences') as FormArray;
+          r.experiences.forEach(e => experiences.push(this.experienceEntryToFormControl(e)));
+          const languages = this.resume.get('languages') as FormArray;
+          r.languages.forEach(l => languages.push(this.skillToFromControl(l)));
+          const skills = this.resume.get('skills') as FormArray;
+          r.skills.forEach(s => skills.push(this.skillToFromControl(s)));
+
+        });
+    } else {
+      this.resumeId = uuid();
+    }
   }
 
   private createNewSkill(): any {
     return this.formBuilder.group({
       name: ['', Validators.required],
       grade: [1, Validators.required]
+    });
+  }
+
+  private skillToFromControl(s: ResumeSkill): AbstractControl {
+    return this.formBuilder.group({
+      name: [s.name, Validators.required],
+      grade: [s.grade, Validators.required]
     });
   }
 
@@ -72,6 +113,16 @@ export class ResumeFormComponent implements OnInit {
       summary: [''],
       from: [new Date()],
       to: []
+    });
+  }
+
+  private experienceEntryToFormControl(e: ResumeExperienceEntry): AbstractControl {
+    return this.formBuilder.group({
+      position: [e.position, Validators.required],
+      company: [e.company, Validators.required],
+      summary: [e.summary],
+      from: [e.from || new Date],
+      to: [e.to || null]
     });
   }
 
