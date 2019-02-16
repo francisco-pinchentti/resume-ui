@@ -16,13 +16,28 @@
         <p>{{ resumeModel.bio }}</p>
       </article>
 
-      <article class="resume-entry">
+      <article class="resume-entry entry-contact">
         <h4>contact</h4>
-        <p>{{ resumeModel.email }}</p>
-        <p>{{ resumeModel.github }}</p>
-        <p>{{ resumeModel.linkedIn }}</p>
-        <p>{{ resumeModel.skypeID }}</p>
-        <p>{{ resumeModel.website }}</p>
+        <p *ngIf="!!resumeModel.contact.email">
+          <mat-icon aria-label=""><i class="material-icons">email</i></mat-icon>
+          <span>{{ resumeModel.contact.email }}</span>
+        </p>
+        <p *ngIf="!!resumeModel.contact.github">
+          <img class="resume-logo-img" src="../../../assets/GitHub-Mark-32px.png" />
+          <span>{{ resumeModel.contact.github }}</span>
+        </p>
+        <p *ngIf="!!resumeModel.contact.linkedIn">
+          <img class="resume-logo-img" src="../../../assets/In-2C-34px-R.png" />
+          <span>{{ resumeModel.contact.linkedIn }}</span>
+        </p>
+        <p *ngIf="!!resumeModel.contact.skypeID">
+          <img class="resume-logo-img" src="../../../assets/skype-icon.svg" />
+          <span>{{ resumeModel.contact.skypeID }}</span>
+        </p>
+        <p *ngIf="!!resumeModel.contact.website">
+          <mat-icon aria-label=""><i class="material-icons">web</i></mat-icon>
+          <span>{{ resumeModel.contact.website }}</span>
+        </p>
       </article>
 
       <article class="resume-entry">
@@ -54,7 +69,16 @@
           <li *ngFor="let s of resumeModel.skills">
             <span>{{ s.name }}</span>
             <span>
-              <i *ngFor="let g of asArray(s.grade)">X</i>
+              <i *ngFor="let g of asArray(s.grade)">
+                <i class="material-icons">
+                  lens
+                </i>
+              </i>
+              <i *ngFor="let nog of asMissingArray(s.grade)">
+                <i class="material-icons">
+                  panorama_fish_eye
+                </i>
+              </i>
             </span>
           </li>
         </ul>

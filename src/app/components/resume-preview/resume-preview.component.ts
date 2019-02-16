@@ -24,7 +24,7 @@ export class ResumePreviewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private resumeService: ResumeService
-  ) { }
+  ) {}
 
   ngOnInit() {
     // get route params with 'paramMap':
@@ -50,6 +50,10 @@ export class ResumePreviewComponent implements OnInit {
     return new Array(n);
   }
 
+  public asMissingArray(n: Number): Array<Number> {
+    return new Array(5 - n.valueOf());
+  }
+
   public gradeToLabel(l: ResumeSkill): string {
     return gradeToLabel(l.grade);
   }
@@ -60,9 +64,7 @@ export class ResumePreviewComponent implements OnInit {
     html2canvas(data).then(canvas => {
       // Few necessary setting options
       const imgWidth = 208;
-      const pageHeight = 295;
       const imgHeight = canvas.height * imgWidth / canvas.width;
-      const heightLeft = imgHeight;
 
       const contentDataURL = canvas.toDataURL('image/png');
       const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
