@@ -57,10 +57,10 @@
                 .entry-list--simple {
                     li {
                         p {
-                            text-transform: capitalize;
                             margin: 0px;
                         }
                         :first-child {
+                            text-transform: capitalize;
                             font-weight: 600;
                         }
                         :nth-child(2) {
